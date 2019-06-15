@@ -16,5 +16,7 @@ public class gravity : MonoBehaviour
 
        rb.AddForce(transform.up * -gravityAmount);
 
+       
+  
    }
 }
