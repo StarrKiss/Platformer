@@ -6,8 +6,7 @@ public class playerControl : MonoBehaviour
 {
 
      public float glideSpeed;
-     private Rigidbody rb;
-     private float distanceToGround;
+     private Rigidbody2D rb;
      public float jumpSpeed;
 
      private GameObject cursorObject;
@@ -22,12 +21,13 @@ public class playerControl : MonoBehaviour
 
      public float glideSubtract;
 
+    public LayerMask groundLayer;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
 
         cursorObject = GameObject.Find("cursorPosition");
 
@@ -35,6 +35,25 @@ public class playerControl : MonoBehaviour
     }
 
     // Update is called once per second
+
+     bool IsGrounded() {
+    Vector2 position = transform.position;
+    Vector2 direction = Vector2.down;
+    float distance = 1.0f;
+    
+    RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer);
+    if (hit.collider != null) {
+        return true;
+    }
+    
+    return false;
+
+
+
+}
+
+
+
     void Update()
     {
       
@@ -48,19 +67,13 @@ public class playerControl : MonoBehaviour
       rb.velocity = (currentVel);
 
 
-       //GroundCheck
-       RaycastHit hit = new RaycastHit();
-              if (Physics.Raycast (transform.position, -Vector3.up, out hit)) {
-                   distanceToGround = hit.distance - 0.5f;
-
-
-              }
+      
 
 
 
 
               //gliding
-       if(Input.GetButton("Fire2") && distanceToGround != 0 && timeleftglide <= overallglidetime){
+       if(Input.GetButton("Fire2") && !IsGrounded() && timeleftglide <= overallglidetime){
           Vector3 vel = rb.velocity;
            vel.y = cursor.yMove * glideSpeed;
 
@@ -80,17 +93,19 @@ public class playerControl : MonoBehaviour
 
        }
         //jumping
-        if(Input.GetButtonDown("Fire1") && distanceToGround < 0.05){
-          rb.AddForce(transform.up * jumpSpeed, ForceMode.Impulse);
+        if(Input.GetButtonDown("Fire1") && IsGrounded()){
+          rb.AddForce(transform.up * jumpSpeed, ForceMode2D.Impulse);
         }
-        if (distanceToGround < 0.05){
+        if (IsGrounded()){
           timeleftglide = 0;
         }
 
 
-
-
-          rb.AddForce(transform.up * -gravitySpeed);
+  if (!IsGrounded()){
+           rb.AddForce(transform.up * -gravitySpeed);
+        }
+         
+      
 
         
 
