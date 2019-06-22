@@ -23,11 +23,15 @@ public class playerControl : MonoBehaviour
 
     public LayerMask groundLayer;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
 
         rb = GetComponent<Rigidbody2D>();
+
+          Cursor.visible = false;
 
         cursorObject = GameObject.Find("cursorPosition");
 
@@ -114,3 +118,4 @@ public class playerControl : MonoBehaviour
     }
     
 }
+

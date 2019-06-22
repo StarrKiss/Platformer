@@ -9,15 +9,28 @@ public class balck : MonoBehaviour
 
     Renderer tilemapRenderer;
 
+    float actualChange;
+
+    float smoothTime = 2f;
+
+    
+
      void Start() {
          tilemapRenderer = tilemap.GetComponent<Renderer>();
     }
-        void OnTriggerEnter2D(Collider2D other)
+        void OnTriggerStay2D(Collider2D other)
     {
         if(other.gameObject.tag == "Player"){
 
                  
-        tilemapRenderer.material.SetFloat("_EffectAmount", 1f);
+                float newPosition = Mathf.SmoothDamp(0f, 1f, ref actualChange, smoothTime);
+                tilemapRenderer.material.SetFloat("_EffectAmount", newPosition);
+
+
+
+       
+
+
         }
 
 
@@ -26,8 +39,20 @@ public class balck : MonoBehaviour
      void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.tag == "Player"){
 
-                 
-        tilemapRenderer.material.SetFloat("_EffectAmount", 0f);
+        
+            float newPosition = Mathf.SmoothDamp(0f, 1f, ref actualChange, smoothTime);
+            tilemapRenderer.material.SetFloat("_EffectAmount", newPosition);
+
         }
+    }
+
+
+     void Update() {
+
+            if (Input.mouseScrollDelta.y > 0){
+                Debug.Log("scrolling in");
+
+            }
+
     }
 }
