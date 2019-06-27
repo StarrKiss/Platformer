@@ -25,16 +25,17 @@ public class checkpoints : MonoBehaviour
     }
 
     public void Update() {
-        if (Input.GetKeyDown("space"))
-        {   
-            if (checkpointNumber != 0)
+        
+           
+            
+        
+    }
+
+    public void Death(){
+ if (checkpointNumber != 0)
             {
                 player.transform.position = lastCheckpoint;
             }
-            
-        }
     }
-
-
     
 }

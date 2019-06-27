@@ -23,6 +23,10 @@ public class playerControl : MonoBehaviour
 
     public LayerMask groundLayer;
 
+    public GameObject gameControl;
+
+    
+  
     
 
     // Start is called before the first frame update
@@ -70,7 +74,10 @@ public class playerControl : MonoBehaviour
 
       rb.velocity = (currentVel);
 
+        if(transform.position.y < -6.5){
 
+          
+        }
       
 
 

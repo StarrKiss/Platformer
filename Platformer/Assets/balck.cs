@@ -14,7 +14,7 @@ public class balck : MonoBehaviour
     float smoothTime = 2f;
 
     
-
+    
      void Start() {
          tilemapRenderer = tilemap.GetComponent<Renderer>();
     }
