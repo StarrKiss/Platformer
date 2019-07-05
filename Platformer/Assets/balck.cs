@@ -12,7 +12,7 @@ public class balck : MonoBehaviour
     float actualChange;
 
     float smoothTime = 2f;
-
+    
     
     
      void Start() {

@@ -6,7 +6,7 @@ public class gravity : MonoBehaviour
 {
     public float gravityAmount = 9.81f;
      Rigidbody rb;
-
+    
 
   public void Start(){
     rb = GetComponent<Rigidbody>();

@@ -24,7 +24,7 @@ public class WorldSwitch : MonoBehaviour
     public bool WorldOneHidden;
      
 
-
+    
     
     
 
@@ -64,7 +64,7 @@ public class WorldSwitch : MonoBehaviour
 
     }
 
-
+    
 
     public void hide(){
 

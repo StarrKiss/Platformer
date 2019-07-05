@@ -29,6 +29,9 @@ public class playerControl : MonoBehaviour
   
     
 
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,7 +79,7 @@ public class playerControl : MonoBehaviour
 
         if(transform.position.y < -6.5){
 
-          
+            gameControl.SendMessage("Death");
         }
       
 

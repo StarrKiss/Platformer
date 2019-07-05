@@ -11,11 +11,12 @@ public class checkpoints : MonoBehaviour
     Vector3 lastCheckpoint;
 
     GameObject player;
+    
+    
+    
+    
 
-
-
-
-    public void Start() {
+ public void Start() {
         player = GameObject.FindWithTag("Player");
     }
     public void newCheckpoint(Vector3 checkPos){
@@ -32,10 +33,15 @@ public class checkpoints : MonoBehaviour
     }
 
     public void Death(){
- if (checkpointNumber != 0)
+            if (checkpointNumber != 0)
             {
+               gameObject.SendMessage("Respawn");
+
+
                 player.transform.position = lastCheckpoint;
             }
     }
+    
+
     
 }

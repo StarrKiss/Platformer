@@ -6,15 +6,15 @@ public class testing : MonoBehaviour
 {
 
     GameObject gameController;
-
+    
     WorldSwitch worldSwitch;
 
     checkpoints checkpoint;
 
     private bool isTriggered = false;
 
-
-
+    
+    
     void Start() {
         gameController = GameObject.FindWithTag("GameController");
         worldSwitch = gameController.GetComponent<WorldSwitch>();
